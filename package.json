@@ -1,0 +1,19 @@
+{
+  "name": "winr",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:reset": "supabase db reset",
+    "supabase:lint": "supabase db lint --local"
+  },
+  "devDependencies": {
+    "supabase": "2.109.1"
+  }
+}
+
