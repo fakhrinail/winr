@@ -91,7 +91,39 @@ Validation results (2026-07-15):
 
 ## Remaining checkpoints
 
-- 1D: Row Level Security.
+## 1D: Row Level Security
+
+Status: **Implemented; awaiting review**
+
+Authorization matrix:
+
+| Resource | Anonymous | Owner | Other user | Notes |
+| --- | --- | --- | --- | --- |
+| `profiles` | None | Read; update timezone/onboarding | None | Trusted bootstrap creates profiles in 1F |
+| `wins` | None | Create, read, update, delete | None | Cannot change ownership |
+| `categories` | None | Create, read, update, delete | None | Cannot change ownership |
+| `tags` | None | Create, read, update, delete | None | Cannot change ownership |
+| `win_tags` | None | Read, attach, detach | None | Delete and recreate rather than update |
+| `win_assets` | None | Create, read, update, delete | None | Storage object policies are added in 1E |
+
+Implementation:
+
+- Anonymous receives no table privileges.
+- Authenticated users can select only their own profile.
+- Authenticated users can update only their own `timezone` and
+  `onboarding_completed_at` fields.
+- Profile insert and delete remain restricted to trusted backend operations.
+- A rollback-only two-user test verifies grants, column permissions, row
+  visibility, owner-only updates, and automatic timestamps.
+- Wins, categories, tags, and asset metadata use owner-scoped CRUD policies.
+- Asset identity is immutable through column grants; clients may only reorder
+  existing asset metadata.
+- Win-tag links derive authorization through both their win and tag; links are
+  detached and recreated rather than updated.
+- Repeatable two-user tests cover positive and negative access for every table.
+
+## Remaining checkpoints
+
 - 1E: private photo storage.
 - 1F: profile bootstrap and starter categories.
 - 1G: notification schema.

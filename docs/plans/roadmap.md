@@ -26,7 +26,7 @@ next checkpoint starts.
 | 1A Repository and tooling | Implemented; awaiting review |
 | 1B Core schema | Implemented; awaiting review |
 | 1C Integrity rules and indexes | Implemented; awaiting review |
-| 1D Row Level Security | Not started |
+| 1D Row Level Security | Implemented; awaiting review |
 | 1E Private photo storage | Not started |
 | 1F Profile bootstrap and starter categories | Not started |
 | 1G Notification schema | Not started |
