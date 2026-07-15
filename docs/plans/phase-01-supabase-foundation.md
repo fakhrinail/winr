@@ -17,7 +17,7 @@ After every checkpoint:
 
 ## 1A: Repository and tooling
 
-Status: **Implemented; awaiting review**
+Status: **Complete**
 
 Included:
 
@@ -36,7 +36,7 @@ Validation results (2026-07-15):
 
 ## 1B: Core schema
 
-Status: **Implemented; awaiting review**
+Status: **Complete**
 
 Included entities:
 
@@ -67,7 +67,7 @@ Validation results (2026-07-15):
 
 ## 1C: Integrity rules and indexes
 
-Status: **Implemented; awaiting review**
+Status: **Complete**
 
 Included:
 
@@ -89,11 +89,9 @@ Validation results (2026-07-15):
 - Transactional tests verify timestamp maintenance and intended deletion behavior.
 - The behavior suite rolls back and leaves no test fixtures behind.
 
-## Remaining checkpoints
-
 ## 1D: Row Level Security
 
-Status: **Implemented; awaiting review**
+Status: **Complete**
 
 Authorization matrix:
 
@@ -104,7 +102,7 @@ Authorization matrix:
 | `categories` | None | Create, read, update, delete | None | Cannot change ownership |
 | `tags` | None | Create, read, update, delete | None | Cannot change ownership |
 | `win_tags` | None | Read, attach, detach | None | Delete and recreate rather than update |
-| `win_assets` | None | Create, read, update, delete | None | Storage object policies are added in 1E |
+| `win_assets` | None | Create, read, update, delete | None | Storage object policies are deferred with photos |
 
 Implementation:
 
@@ -124,7 +122,21 @@ Implementation:
 
 ## Remaining checkpoints
 
-- 1E: private photo storage.
-- 1F: profile bootstrap and starter categories.
-- 1G: notification schema.
-- 1H: generated types, automated tests, and handoff documentation.
+- 1E: private photo Storage — **deferred until after the text-only launch**.
+- 1F: profile bootstrap and starter categories — **next**.
+- 1G: notification preferences and push-subscription schema.
+- 1H: generated types, pgTAP consolidation, and backend handoff documentation.
+
+## Revised delivery boundary
+
+The first usable backend and PWA exclude photos. The existing `win_assets` table,
+integrity rules, and RLS remain in place but dormant. Phase 1 does not create the
+`win-photos` bucket or Storage policies.
+
+After 1F–1H, the next sequence is:
+
+1. Link and validate a hosted Supabase Free project.
+2. Configure magic-link authentication.
+3. Build the text-only PWA with offline capture and reflection.
+4. Register real browser push subscriptions and implement scheduled delivery.
+5. Return to private photo Storage only after the core product is validated.
