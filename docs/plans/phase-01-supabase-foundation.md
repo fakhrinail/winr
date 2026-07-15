@@ -65,9 +65,32 @@ Validation results (2026-07-15):
 - `supabase db lint --local` reported no schema errors.
 - `git diff --check` reported no whitespace errors.
 
+## 1C: Integrity rules and indexes
+
+Status: **Implemented; awaiting review**
+
+Included:
+
+- Nonblank and positive-value checks contributed collaboratively.
+- Case- and whitespace-insensitive category/tag uniqueness per user.
+- Unique photo positions per win and unique Storage object paths.
+- Indexes for timeline, category, tag, category-picker, and asset-usage queries.
+- Immutable ownership and same-owner checks across related records.
+- Automatic `updated_at` maintenance.
+- Existing foreign-key deletion behavior retained: category deletion uncategorizes
+  wins; win and tag deletion cascades their dependent metadata.
+
+Validation results (2026-07-15):
+
+- A clean database reset applied both migrations successfully.
+- Local schema lint reported no errors.
+- Transactional tests reject normalized duplicates, cross-owner relationships,
+  and duplicate photo positions.
+- Transactional tests verify timestamp maintenance and intended deletion behavior.
+- The behavior suite rolls back and leaves no test fixtures behind.
+
 ## Remaining checkpoints
 
-- 1C: integrity rules and indexes.
 - 1D: Row Level Security.
 - 1E: private photo storage.
 - 1F: profile bootstrap and starter categories.

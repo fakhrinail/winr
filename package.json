@@ -10,10 +10,10 @@
     "supabase:stop": "supabase stop",
     "supabase:status": "supabase status",
     "supabase:reset": "supabase db reset",
-    "supabase:lint": "supabase db lint --local"
+    "supabase:lint": "supabase db lint --local",
+    "supabase:test:1c": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1c_integrity.sql"
   },
   "devDependencies": {
     "supabase": "2.109.1"
   }
 }
-

@@ -25,7 +25,7 @@ next checkpoint starts.
 | --- | --- |
 | 1A Repository and tooling | Implemented; awaiting review |
 | 1B Core schema | Implemented; awaiting review |
-| 1C Integrity rules and indexes | Not started |
+| 1C Integrity rules and indexes | Implemented; awaiting review |
 | 1D Row Level Security | Not started |
 | 1E Private photo storage | Not started |
 | 1F Profile bootstrap and starter categories | Not started |
@@ -39,4 +39,3 @@ The PWA will communicate directly with Supabase under Row Level Security. Winr
 does not require a dedicated backend server for v1. Scheduled or privileged
 operations will run in Supabase Edge Functions, and service-role credentials
 will never be exposed to the browser.
-
