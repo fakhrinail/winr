@@ -5,15 +5,10 @@ values
   ('00000000-0000-0000-0000-000000000001'),
   ('00000000-0000-0000-0000-000000000002');
 
-insert into public.profiles (id)
-values
-  ('00000000-0000-0000-0000-000000000001'),
-  ('00000000-0000-0000-0000-000000000002');
-
 insert into public.categories (id, user_id, name)
 values
-  ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000001', 'Health'),
-  ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000002', 'Health');
+  ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000001', 'Custom Health'),
+  ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000002', 'Custom Health');
 
 insert into public.tags (id, user_id, name)
 values
@@ -41,7 +36,7 @@ begin
 
   begin
     insert into public.categories (user_id, name)
-    values ('00000000-0000-0000-0000-000000000001', ' health ');
+    values ('00000000-0000-0000-0000-000000000001', ' custom health ');
     raise exception 'normalized category duplicate was accepted';
   exception when unique_violation then
     null;

@@ -53,8 +53,8 @@ Dashboard-only schema changes.
 - 1D RLS for profiles, wins, categories, tags, win tags, and asset metadata:
   implemented and tested.
 - 1E private photo Storage: explicitly deferred.
-- 1F profile bootstrap and starter categories: next.
-- 1G notification preferences and push-subscription schema: follows 1F.
+- 1F profile bootstrap and starter categories: implemented and tested.
+- 1G notification preferences and push-subscription schema: next.
 - 1H generated types, pgTAP consolidation, and backend handoff: follows 1G.
 
 After Phase 1, connect a hosted Supabase Free project, configure magic-link
@@ -92,4 +92,3 @@ stack is running. Tests must use transactions and roll back their fixtures.
 - `docs/plans/roadmap.md` contains the phase sequence and delivery status.
 - `docs/plans/phase-01-supabase-foundation.md` contains checkpoint-level backend
   decisions and validation results.
-

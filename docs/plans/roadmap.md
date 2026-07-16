@@ -28,8 +28,8 @@ next checkpoint starts.
 | 1C Integrity rules and indexes | Complete |
 | 1D Row Level Security | Complete |
 | 1E Private photo storage | Deferred until after text-only launch |
-| 1F Profile bootstrap and starter categories | Next |
-| 1G Notification schema | Not started |
+| 1F Profile bootstrap and starter categories | Complete |
+| 1G Notification schema | Next |
 | 1H Types, tests, and handoff | Not started |
 | Phases 2–5 | Not started |
 

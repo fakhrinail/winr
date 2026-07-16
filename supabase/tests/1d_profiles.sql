@@ -5,11 +5,6 @@ values
   ('00000000-0000-0000-0000-000000000001'),
   ('00000000-0000-0000-0000-000000000002');
 
-insert into public.profiles (id, timezone)
-values
-  ('00000000-0000-0000-0000-000000000001', 'Asia/Jakarta'),
-  ('00000000-0000-0000-0000-000000000002', 'UTC');
-
 do $test$
 begin
   if has_table_privilege('anon', 'public.profiles', 'select') then
@@ -100,4 +95,3 @@ $test$;
 
 reset role;
 rollback;
-

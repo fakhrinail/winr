@@ -5,15 +5,10 @@ values
   ('00000000-0000-0000-0000-000000000001'),
   ('00000000-0000-0000-0000-000000000002');
 
-insert into public.profiles (id)
-values
-  ('00000000-0000-0000-0000-000000000001'),
-  ('00000000-0000-0000-0000-000000000002');
-
 insert into public.categories (id, user_id, name)
 values
-  ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000001', 'Health'),
-  ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000002', 'Health');
+  ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000001', 'Custom Health'),
+  ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000002', 'Custom Health');
 
 insert into public.tags (id, user_id, name)
 values
@@ -77,8 +72,8 @@ declare
   visible_rows integer;
 begin
   select count(*) into visible_rows from public.categories;
-  if visible_rows <> 1 then
-    raise exception 'user can see % categories instead of 1', visible_rows;
+  if visible_rows <> 6 then
+    raise exception 'user can see % categories instead of 6', visible_rows;
   end if;
 
   select count(*) into visible_rows from public.tags;
@@ -202,4 +197,3 @@ $test$;
 
 reset role;
 rollback;
-

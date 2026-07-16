@@ -123,9 +123,34 @@ Implementation:
 ## Remaining checkpoints
 
 - 1E: private photo Storage — **deferred until after the text-only launch**.
-- 1F: profile bootstrap and starter categories — **next**.
-- 1G: notification preferences and push-subscription schema.
+- 1F: profile bootstrap and starter categories — **complete**.
+- 1G: notification preferences and push-subscription schema — **next**.
 - 1H: generated types, pgTAP consolidation, and backend handoff documentation.
+
+## 1F: Profile bootstrap and starter categories
+
+Status: **Complete**
+
+Implementation:
+
+- An `auth.users` insert trigger invokes a trusted `security definer` routine.
+- Every new user receives one profile with `UTC` as the safe default timezone.
+- Every new user receives Health, Work & Learning, Relationships, Personal
+  Growth, and Everyday Life in a stable display order with starter colors.
+- The routine is idempotent: trusted retries preserve one profile and five
+  categories.
+- Anonymous and authenticated API roles cannot execute the trusted routines.
+- Deleting the Auth user cascades their profile and starter categories.
+
+Validation results (2026-07-16):
+
+- A clean database reset applied all six migrations successfully.
+- Local schema lint reported no errors.
+- Existing 1C integrity and 1D authorization suites remain green after automatic
+  profile/category creation was introduced.
+- The 1F suite verifies initial bootstrap, exact starter data, safe retries,
+  independent users, API-role denial, RLS visibility, and Auth deletion cascades.
+- Every test rolls back its fixtures.
 
 ## Revised delivery boundary
 
