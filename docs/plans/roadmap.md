@@ -29,8 +29,8 @@ next checkpoint starts.
 | 1D Row Level Security | Complete |
 | 1E Private photo storage | Deferred until after text-only launch |
 | 1F Profile bootstrap and starter categories | Complete |
-| 1G Notification schema | Next |
-| 1H Types, tests, and handoff | Not started |
+| 1G Notification foundation | Complete |
+| 1H Types, tests, and handoff | Next |
 | Phases 2–5 | Not started |
 
 ## Architecture boundary

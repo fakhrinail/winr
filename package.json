@@ -16,7 +16,9 @@
     "supabase:test:1d:wins": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1d_wins.sql",
     "supabase:test:1d:remaining": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1d_remaining.sql",
     "supabase:test:1d": "npm run supabase:test:1d:profiles && npm run supabase:test:1d:wins && npm run supabase:test:1d:remaining",
-    "supabase:test:1f": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1f_bootstrap.sql"
+    "supabase:test:1f": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1f_bootstrap.sql",
+    "supabase:test:1g": "docker exec -i supabase_db_winr psql -v ON_ERROR_STOP=1 -U postgres -d postgres < supabase/tests/1g_notifications.sql",
+    "supabase:test:backend": "npm run supabase:test:1c && npm run supabase:test:1d && npm run supabase:test:1f && npm run supabase:test:1g"
   },
   "devDependencies": {
     "supabase": "2.109.1"

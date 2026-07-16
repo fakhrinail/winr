@@ -124,8 +124,8 @@ Implementation:
 
 - 1E: private photo Storage — **deferred until after the text-only launch**.
 - 1F: profile bootstrap and starter categories — **complete**.
-- 1G: notification preferences and push-subscription schema — **next**.
-- 1H: generated types, pgTAP consolidation, and backend handoff documentation.
+- 1G: notification foundation — **complete**.
+- 1H: generated types, pgTAP consolidation, and backend handoff — **next**.
 
 ## 1F: Profile bootstrap and starter categories
 
@@ -151,6 +151,35 @@ Validation results (2026-07-16):
 - The 1F suite verifies initial bootstrap, exact starter data, safe retries,
   independent users, API-role denial, RLS visibility, and Auth deletion cascades.
 - Every test rolls back its fixtures.
+
+## 1G: Notification foundation
+
+Status: **Complete**
+
+Implementation:
+
+- Preferences separate the 20:00 evening log reminder from weekly and monthly
+  07:00 morning recaps; every setting defaults to disabled.
+- Reminder and recap times support 15-minute increments, while timezone remains
+  owned by the profile.
+- Win text is hidden from notification payloads by default.
+- Each browser installation has its own private push-subscription row; browser
+  roles cannot modify server delivery-health fields.
+- A server-only delivery table claims each user/type/period once to prevent
+  duplicate reminders and recaps.
+- Existing profiles are backfilled and future Auth users receive preferences
+  through the retry-safe bootstrap.
+- Actual Web Push, VAPID configuration, Cron, recap selection, and delivery are
+  deferred until the PWA exists.
+
+Validation results (2026-07-16):
+
+- A clean database reset applied all seven migrations successfully.
+- Local schema lint reported no errors.
+- The aggregate 1C–1G backend suite passes without leaving fixtures.
+- Tests verify bootstrap defaults and retries, quarter-hour time constraints,
+  unique endpoints, unique delivery claims, valid notification types, protected
+  delivery-health fields, multiple devices, and two-user RLS isolation.
 
 ## Revised delivery boundary
 

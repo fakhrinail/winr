@@ -54,8 +54,8 @@ Dashboard-only schema changes.
   implemented and tested.
 - 1E private photo Storage: explicitly deferred.
 - 1F profile bootstrap and starter categories: implemented and tested.
-- 1G notification preferences and push-subscription schema: next.
-- 1H generated types, pgTAP consolidation, and backend handoff: follows 1G.
+- 1G notification foundation: implemented and tested.
+- 1H generated types, pgTAP consolidation, and backend handoff: next.
 
 After Phase 1, connect a hosted Supabase Free project, configure magic-link
 authentication, build the text-only PWA, then implement actual web-push delivery.
@@ -81,6 +81,8 @@ npm run supabase:reset
 npm run supabase:lint
 npm run supabase:test:1c
 npm run supabase:test:1d
+npm run supabase:test:1f
+npm run supabase:test:1g
 npm run supabase:stop
 ```
 
